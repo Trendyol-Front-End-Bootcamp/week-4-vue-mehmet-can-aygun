@@ -37,6 +37,8 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
+  transition: padding 0.3s;
+  position: relative;
 
   a {
     width: 100%;
@@ -48,6 +50,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: padding 0.3s;
 
     img {
       width: 100%;
@@ -75,6 +78,42 @@ export default {
       }
     }
   }
+}
+
+.starship-item::before,
+.starship-item::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 0;
+  z-index: -1;
+  transition: height 0.3s 0.1s;
+}
+
+.starship-item::before {
+  top: 0;
+  background-color: $color-secondary;
+  transform-origin: top;
+}
+
+.starship-item::after {
+  bottom: 0;
+  background-color: $color-tertiary;
+  transform-origin: bottom;
+}
+
+.starship-item:hover {
+  padding: 0;
+
+  a {
+    padding: 16px;
+  }
+}
+
+.starship-item:hover::before,
+.starship-item:hover::after {
+  height: 50%;
 }
 
 // Media Queries
