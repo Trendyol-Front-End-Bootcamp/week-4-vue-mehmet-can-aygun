@@ -34,6 +34,28 @@ a {
   text-decoration: none;
 }
 
+/* Custom Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $color-dark-gray;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $color-primary;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: darken($color-primary, 20);
+}
+
 body {
   background-color: #000;
   color: $color-light;
