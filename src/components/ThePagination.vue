@@ -6,11 +6,11 @@
     <button
       v-if="pagination.previous"
       @click="$emit('get-page', pagination.previous)"
-    ><i class="fas fa-chevron-left"></i></button>
+    ><i class="fas fa-chevron-left"></i> Previous</button>
     <button
       v-if="pagination.next"
       @click="$emit('get-page', pagination.next)"
-    ><i class="fas fa-chevron-right"></i></button>
+    >Next <i class="fas fa-chevron-right"></i></button>
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
 .pagination {
   width: 100%;
   height: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -38,14 +38,26 @@ export default {
 
   button {
     height: 100%;
-    width: 30px;
+    padding: 0 8px;
+    font-size: 16px;
     border: none;
     background-color: $color-light;
-    border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    i {
+      margin-right: 10px;
+      transform: translateY(1px);
+    }
+
+    &:last-of-type {
+      i {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+    }
   }
 
   button:hover {

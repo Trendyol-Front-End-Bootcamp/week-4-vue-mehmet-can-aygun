@@ -115,11 +115,4 @@ export default {
 .starship-item:hover::after {
   height: 50%;
 }
-
-// Media Queries
-@media (max-width: 768px) {
-  .starship-item {
-    height: 50vw;
-  }
-}
 </style>

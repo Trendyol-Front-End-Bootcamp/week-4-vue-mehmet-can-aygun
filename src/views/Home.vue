@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <TheSearch @search-starship="searchStarship" />
     <ThePagination
       :pagination="pagination"
       @get-page="getPage"
@@ -15,12 +16,14 @@
 <script>
 import StarshipList from "../components/StarshipList";
 import ThePagination from "../components/ThePagination";
+import TheSearch from "../components/TheSearch";
 
 export default {
   name: "Home",
   components: {
     StarshipList,
     ThePagination,
+    TheSearch,
   },
   data() {
     return {
@@ -60,10 +63,29 @@ export default {
         console.log(err.message);
       }
     },
+    async searchStarship({ param, term }) {
+      try {
+        const res = await fetch(
+          `https://swapi.dev/api/starships/?${param}=${term}`
+        );
+
+        const data = await res.json();
+
+        console.log(data);
+
+        const { count, next, previous, results } = data;
+
+        [this.pagination, this.starships] = [
+          { count, next, previous },
+          results,
+        ];
+      } catch (err) {
+        console.log(err.message);
+      }
+    },
   },
   async created() {
     [this.pagination, this.starships] = await this.getStarships();
-    console.log(this.pagination);
   },
 };
 </script>

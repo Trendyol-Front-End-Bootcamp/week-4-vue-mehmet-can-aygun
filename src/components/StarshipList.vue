@@ -31,7 +31,7 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 3vw;
   row-gap: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 // Media Queries
