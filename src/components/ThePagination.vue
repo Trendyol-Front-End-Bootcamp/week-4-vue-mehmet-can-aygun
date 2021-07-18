@@ -47,16 +47,17 @@ export default {
     align-items: center;
     cursor: pointer;
 
-    i {
-      margin-right: 10px;
+    .fa-chevron-left,
+    .fa-chevron-right {
       transform: translateY(1px);
     }
 
-    &:last-of-type {
-      i {
-        margin-right: 0;
-        margin-left: 10px;
-      }
+    .fa-chevron-left {
+      margin-right: 10px;
+    }
+
+    .fa-chevron-right {
+      margin-left: 10px;
     }
   }
 

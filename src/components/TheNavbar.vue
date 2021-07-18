@@ -48,4 +48,11 @@ export default {
     }
   }
 }
+
+// Media Queries
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 $px-sm;
+  }
+}
 </style>

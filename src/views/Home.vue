@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <main class="home">
     <TheSearch @search-starship="searchStarship" />
     <ThePagination
       :pagination="pagination"
@@ -10,7 +10,7 @@
       :pagination="pagination"
       @get-page="getPage"
     />
-  </div>
+  </main>
 </template>
 
 <script>
@@ -71,7 +71,7 @@ export default {
 
         const data = await res.json();
 
-        console.log(data);
+        // console.log(data);
 
         const { count, next, previous, results } = data;
 
