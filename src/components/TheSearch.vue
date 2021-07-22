@@ -59,13 +59,13 @@ export default {
         font-size: 13px;
       }
 
-      input,
-      select {
+      input {
         height: 36px;
         padding: 0 8px;
         font-size: 16px;
         border: none;
         outline: none;
+        border-radius: 4px;
       }
     }
 
@@ -81,6 +81,7 @@ export default {
         font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
+        border-radius: 4px;
       }
 
       button:hover {

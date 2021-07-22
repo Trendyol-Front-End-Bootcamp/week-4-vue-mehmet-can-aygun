@@ -39,6 +39,7 @@ export default {
   background-attachment: scroll;
   transition: padding 0.3s;
   position: relative;
+  border-radius: 4px;
 
   a {
     width: 100%;
@@ -51,6 +52,7 @@ export default {
     flex-direction: column;
     align-items: center;
     transition: padding 0.3s;
+    border-radius: 4px;
 
     img {
       width: 100%;
@@ -65,6 +67,7 @@ export default {
       color: $color-light;
       font-size: 18px;
       margin-bottom: 8px;
+      border-radius: 4px;
     }
 
     p {
@@ -88,19 +91,23 @@ export default {
   width: calc(100% + 8px);
   height: 0;
   z-index: -1;
-  transition: height 0.3s 0.1s;
+  transition: height 0.3s 0.1s, box-shadow 0.8s;
 }
 
 .starship-item::before {
   top: 0;
   background-color: $color-secondary;
   transform-origin: top;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .starship-item::after {
   bottom: 0;
   background-color: $color-tertiary;
   transform-origin: bottom;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .starship-item:hover {
@@ -114,5 +121,13 @@ export default {
 .starship-item:hover::before,
 .starship-item:hover::after {
   height: 50%;
+}
+
+.starship-item:hover::before {
+  box-shadow: 0px -4px 30px rgba($color-secondary, 0.3);
+}
+
+.starship-item:hover::after {
+  box-shadow: 0px 4px 30px rgba($color-tertiary, 0.3);
 }
 </style>

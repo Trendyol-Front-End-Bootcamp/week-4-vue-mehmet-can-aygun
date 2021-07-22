@@ -46,6 +46,7 @@ export default {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 4px;
 
     .fa-chevron-left,
     .fa-chevron-right {
