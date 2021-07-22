@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       starship: null,
-      loading: true,
+      loading: false,
     };
   },
   methods: {

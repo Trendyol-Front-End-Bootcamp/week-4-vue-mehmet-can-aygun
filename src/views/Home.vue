@@ -1,15 +1,26 @@
 <template>
   <main class="home">
     <TheSearch @search-starship="searchStarship" />
-    <ThePagination
-      :pagination="pagination"
-      @get-page="getPage"
-    />
-    <StarshipList :starships="starships" />
-    <ThePagination
-      :pagination="pagination"
-      @get-page="getPage"
-    />
+    <div
+      class="loading"
+      v-if="loading"
+    >
+      <TheLoading />
+    </div>
+    <div
+      class="home-container"
+      v-else
+    >
+      <ThePagination
+        :pagination="pagination"
+        @get-page="getPage"
+      />
+      <StarshipList :starships="starships" />
+      <ThePagination
+        :pagination="pagination"
+        @get-page="getPage"
+      />
+    </div>
   </main>
 </template>
 
@@ -17,6 +28,7 @@
 import StarshipList from "../components/StarshipList";
 import ThePagination from "../components/ThePagination";
 import TheSearch from "../components/TheSearch";
+import TheLoading from "../components/TheLoading";
 
 export default {
   name: "Home",
@@ -24,23 +36,27 @@ export default {
     StarshipList,
     ThePagination,
     TheSearch,
+    TheLoading,
   },
   data() {
     return {
       starships: [],
       pagination: null,
+      loading: false,
     };
   },
   methods: {
     async getStarships() {
+      this.loading = true;
+
       try {
         const res = await fetch("https://swapi.dev/api/starships/");
 
         const data = await res.json();
 
-        const { count, next, previous, results } = data;
+        this.loading = false;
 
-        // console.log(results[0]);
+        const { count, next, previous, results } = data;
 
         return [{ count, next, previous }, results];
       } catch (err) {
@@ -48,10 +64,14 @@ export default {
       }
     },
     async getPage(url) {
+      this.loading = true;
+
       try {
         const res = await fetch(url);
 
         const data = await res.json();
+
+        this.loading = false;
 
         const { count, next, previous, results } = data;
 
@@ -63,15 +83,17 @@ export default {
         console.log(err.message);
       }
     },
-    async searchStarship({ param, term }) {
+    async searchStarship(term) {
+      this.loading = true;
+
       try {
         const res = await fetch(
-          `https://swapi.dev/api/starships/?${param}=${term}`
+          `https://swapi.dev/api/starships/?search=${term}`
         );
 
         const data = await res.json();
 
-        // console.log(data);
+        this.loading = false;
 
         const { count, next, previous, results } = data;
 

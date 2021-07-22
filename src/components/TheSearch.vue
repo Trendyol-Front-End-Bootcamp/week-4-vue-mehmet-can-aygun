@@ -5,18 +5,11 @@
       @submit.prevent="onSubmit"
     >
       <div className="input-group">
-        <label>Search Parameter</label>
-        <select v-model="searchParam">
-          <option value="name">Name</option>
-          <option value="model">Model</option>
-        </select>
-      </div>
-      <div className="input-group">
         <label>Search Term</label>
         <input
           v-model="searchTerm"
           type="search"
-          placeholder="Enter a search term"
+          placeholder="Enter a starship name or a model"
         >
       </div>
       <div className="input-group btn">
@@ -33,18 +26,12 @@ export default {
   name: "TheSearch",
   data() {
     return {
-      searchParam: "name",
       searchTerm: "",
     };
   },
   methods: {
     onSubmit() {
-      const searchObj = {
-        param: this.searchParam,
-        term: this.searchTerm,
-      };
-
-      this.$emit("search-starship", searchObj);
+      this.$emit("search-starship", this.searchTerm);
     },
   },
 };
