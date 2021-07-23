@@ -1,18 +1,18 @@
-## 112. Trendyol Front-End Bootcamp - 4. Hafta Ödevi
+## 112. Trendyol Front-End Bootcamp - Homework for the 4th week
 
-## Ödev Konusu
+## Subject
 
-Star Wars API kullanarak starship listesini ve detay sayfalarını ekrana yazdıran bir Vue uygulaması geliştirmek.
+Create a Vue app that lists starships and detail page for each starship by using Star Wars API.
 
-## İstenilenler
+## User Stories
 
-- Star Wars API kullanarak starshipleri listele
-- List itemlarda name, model ve hyperdrive_rating yazsın
-- Yukarıda bulunan 1 adet input ile name ve model'e göre api üzerinden search yapılabilsin
-- Detaya tıklandığında yeni bir sayfa açılsın ve list item'a ek olarak passengers,max_atmosphering_speed, manufacturer, crew ve cargo_capacity yer alsın
-- Detay sayfasından listeleme sayfasına geri dönülebilsin
+- List starships by using Star Wars API
+- Starship items should include name, model and hyperdrive_rating
+- Users can search starships by its name or model through the API, using a single input above
+- Users can click on any item and go to a detail page that includes passengers, max_atmosphering_speed, manufacturer, crew and cargo_capacity in addition to name and model
+- Users can go back to home page from detail page
 
-## Projeyi çalıştırmak için
+## To run the project
 
 ```
 npm install
