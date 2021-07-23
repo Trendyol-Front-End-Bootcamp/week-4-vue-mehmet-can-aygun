@@ -55,14 +55,19 @@ export default {
     };
   },
   methods: {
+    // Get a single starship with the ID
     async getStarship(id) {
+      // Set Loading true to display loading animation
       this.loading = true;
 
+      // Make the API call and return the specific starship with the given ID
+      // Display errors on the console if there's any
       try {
         const res = await fetch(`https://swapi.dev/api/starships/${id}/`);
 
         const data = await res.json();
 
+        // Set loading false once the data is fetched
         this.loading = false;
 
         return data;
@@ -71,6 +76,7 @@ export default {
       }
     },
   },
+  // Call function to get a single starship when the Detail view is created
   async created() {
     this.starship = await this.getStarship(this.$route.params.id);
   },
