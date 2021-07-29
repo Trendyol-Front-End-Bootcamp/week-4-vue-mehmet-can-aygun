@@ -30,6 +30,10 @@ import ThePagination from "../components/ThePagination";
 import TheSearch from "../components/TheSearch";
 import TheLoading from "../components/TheLoading";
 
+import ApiService from "../services/ApiService";
+
+const apiService = new ApiService();
+
 export default {
   name: "Home",
   components: {
@@ -46,84 +50,31 @@ export default {
     };
   },
   methods: {
-    // Get all starships when the home view mounts
     async getStarships() {
-      // Set Loading true to display loading animation
       this.loading = true;
 
-      // Make the API call and return the data including starships & pagination
-      // Display errors on the console if there's any
-      try {
-        const res = await fetch("https://swapi.dev/api/starships/");
+      [this.starships, this.pagination] = await apiService.getStarships();
 
-        const data = await res.json();
-
-        // Set loading false once the data is fetched
-        this.loading = false;
-
-        const { count, next, previous, results } = data;
-
-        return [{ count, next, previous }, results];
-      } catch (err) {
-        console.log(err.message);
-      }
+      this.loading = false;
     },
-    // Get next or previous page
     async getPage(url) {
-      // Set Loading true to display loading animation
       this.loading = true;
 
-      // Make the API call and set state with the newly fetched data
-      // Display errors on the console if there's any
-      try {
-        const res = await fetch(url);
+      [this.starships, this.pagination] = await apiService.getPage(url);
 
-        const data = await res.json();
-
-        // Set loading false once the data is fetched
-        this.loading = false;
-
-        const { count, next, previous, results } = data;
-
-        [this.pagination, this.starships] = [
-          { count, next, previous },
-          results,
-        ];
-      } catch (err) {
-        console.log(err.message);
-      }
+      this.loading = false;
     },
-    // Search starships that match with the search term
     async searchStarship(term) {
-      // Set Loading true to display loading animation
       this.loading = true;
 
-      // Make the API call and set state with the search results
-      // Display errors on the console if there's any
-      try {
-        const res = await fetch(
-          `https://swapi.dev/api/starships/?search=${term}`
-        );
+      [this.starships, this.pagination] = await apiService.searchStarship(term);
 
-        const data = await res.json();
-
-        // Set loading false once the data is fetched
-        this.loading = false;
-
-        const { count, next, previous, results } = data;
-
-        [this.pagination, this.starships] = [
-          { count, next, previous },
-          results,
-        ];
-      } catch (err) {
-        console.log(err.message);
-      }
+      this.loading = false;
     },
   },
   // Call function to get all starships when the Home view is created
   async created() {
-    [this.pagination, this.starships] = await this.getStarships();
+    await this.getStarships();
   },
 };
 </script>
