@@ -20,10 +20,6 @@
       >
         <NotFound @back-to-home="backToHome" />
       </div>
-      <ThePagination
-        :pagination="pagination"
-        @get-page="getPage"
-      />
       <StarshipList :starships="starships" />
       <ThePagination
         :pagination="pagination"
