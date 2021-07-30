@@ -38,10 +38,15 @@ export default {
 
   button {
     height: 100%;
-    padding: 0 8px;
+    width: 100px;
     font-size: 16px;
     border: none;
-    background-color: $color-light;
+    background-color: $color-dark-gray;
+    color: $color-light;
+    border-top: 2px solid $color-secondary;
+    border-bottom: 2px solid $color-tertiary;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +68,8 @@ export default {
   }
 
   button:hover {
-    background-color: $color-primary;
+    border-right: 2px solid $color-secondary;
+    border-left: 2px solid $color-tertiary;
   }
 }
 </style>

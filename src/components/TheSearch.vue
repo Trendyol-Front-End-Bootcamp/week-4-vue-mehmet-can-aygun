@@ -93,6 +93,7 @@ export default {
         border: none;
         outline: none;
         background-color: lighten($color-dark-gray, 5);
+        border: 1px solid lighten($color-dark-gray, 5);
         color: $color-light;
         border-radius: 6px 0 0 6px;
       }
@@ -138,7 +139,10 @@ export default {
         height: 100%;
         border: none;
         font-size: 16px;
-        background-color: $color-primary;
+        background-image: linear-gradient(
+          $color-primary,
+          darken($color-primary, 10)
+        );
         color: $color-dark-gray;
         font-weight: bold;
         text-transform: uppercase;
@@ -147,7 +151,10 @@ export default {
       }
 
       button:hover {
-        background-color: darken($color-primary, 10);
+        background-image: linear-gradient(
+          darken($color-primary, 10),
+          $color-primary
+        );
       }
     }
   }

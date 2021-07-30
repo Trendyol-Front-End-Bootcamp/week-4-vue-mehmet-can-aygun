@@ -63,7 +63,7 @@ export default {
       width: 100%;
       padding: 4px;
       text-align: center;
-      background-color: rgba($color-primary, 0.3);
+      background-color: rgba(#000, 0.7);
       color: $color-light;
       font-size: 18px;
       margin-bottom: 8px;
