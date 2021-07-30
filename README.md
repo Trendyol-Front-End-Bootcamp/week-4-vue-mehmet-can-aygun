@@ -29,3 +29,14 @@ npm run build
 ## Demo
 
 [Star Wars Starships](https://mca-fe-bootcamp-starwars-starships.netlify.app/) | [mehmetcanaygun.com](https://mehmetcanaygun.com)
+
+## Images
+
+**Home Page**
+![Home View](/src/assets/home-ss.png)
+
+**Details Page**
+![Detail View](/src/assets/detail-ss.png)
+
+**Not Found Component**
+![NotFound View](/src/assets/404-ss.png)
