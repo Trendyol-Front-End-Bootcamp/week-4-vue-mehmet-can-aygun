@@ -11,8 +11,9 @@
           placeholder="Enter a starship name or a model"
         >
         <button
+          type="button"
           :class="showClearBtn ? 'clear-btn toggled'  : 'clear-btn'"
-          @click.prevent="clearSearch"
+          @click="clearSearch"
         >
           <i class="fas fa-times"></i>
         </button>
