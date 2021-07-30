@@ -1,6 +1,12 @@
 <template>
   <div class="loading-container">
-    <div class="loading"></div>
+    <div class="lightsaber">
+      <img
+        src="../assets/lightsaber.svg"
+        alt="Loading"
+      >
+    </div>
+    <div class="light"></div>
   </div>
 </template>
 
@@ -15,38 +21,52 @@ export default {
 @import "../style/variables";
 
 .loading-container {
-  height: 230px;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
-  .loading {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 12px solid rgba($color-primary, 0.2);
-    border-top: 12px solid $color-primary;
-    animation: loading 0.5s ease-in-out infinite;
+  .lightsaber {
+    height: 30px;
+
+    img {
+      max-height: 100%;
+    }
+  }
+
+  .light {
+    flex: grow;
+    height: 16px;
+    background: lighten($color-tertiary, 40);
+    border-radius: 0 6px 6px 0;
+    box-shadow: 4px 0px 40px 8px rgba($color-tertiary, 0.9);
+    animation: loading 0.4s ease-in-out infinite;
   }
 }
 
 @keyframes loading {
-  from {
-    transform: rotate(0deg);
+  0%,
+  100% {
+    width: 0;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    width: 100%;
   }
 }
 
 // Media Queries
 @media (max-width: 768px) {
   .loading-container {
-    height: 200px;
+    width: 100%;
 
-    .loading {
-      width: 120px;
-      height: 120px;
+    .lightsaber {
+      height: 16px;
+    }
+
+    .light {
+      height: 8px;
     }
   }
 }
