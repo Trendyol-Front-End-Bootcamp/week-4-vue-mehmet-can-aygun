@@ -4,13 +4,18 @@
       className="search-form"
       @submit.prevent="onSubmit"
     >
-      <div className="input-group">
-        <label>Search Term</label>
+      <div className="input-group search">
         <input
           v-model="searchTerm"
-          type="search"
+          type="text"
           placeholder="Enter a starship name or a model"
         >
+        <button
+          :class="showClearBtn ? 'clear-btn toggled'  : 'clear-btn'"
+          @click.prevent="clearSearch"
+        >
+          <i class="fas fa-times"></i>
+        </button>
       </div>
       <div className="input-group btn">
         <button>
@@ -27,11 +32,25 @@ export default {
   data() {
     return {
       searchTerm: "",
+      showClearBtn: false,
     };
   },
   methods: {
     onSubmit() {
       this.$emit("search-starship", this.searchTerm);
+      this.showClearBtn = true;
+    },
+    clearSearch(e) {
+      e.preventDefault();
+
+      // Hide clear btn
+      this.showClearBtn = false;
+
+      // Emit with empty search term
+      this.$emit("search-starship", "");
+
+      // Clear input
+      this.searchTerm = "";
     },
   },
 };
@@ -47,33 +66,70 @@ export default {
   .search-form {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    height: 80px;
 
     .input-group {
-      flex: 1;
+      flex: 4;
       display: flex;
       flex-direction: column;
+      height: 100%;
 
       label {
         margin-bottom: 8px;
         font-size: 13px;
+        display: none;
       }
 
       input {
-        height: 36px;
-        padding: 0 8px;
-        font-size: 16px;
+        height: 100%;
+        padding: 0 60px 0 16px;
+        font-size: 24px;
         border: none;
         outline: none;
-        border-radius: 4px;
+        background-color: lighten($color-dark-gray, 5);
+        color: $color-light;
+        border-radius: 6px 0 0 6px;
+      }
+
+      input:focus {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    .input-group.search {
+      position: relative;
+
+      .clear-btn {
+        position: absolute;
+        top: calc(50% - 20px);
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        font-weight: bold;
+        background: none;
+        color: $color-secondary;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(16px);
+        transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+      }
+
+      .clear-btn.toggled {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
       }
     }
 
     .input-group.btn {
-      align-self: flex-end;
+      flex: 1;
 
       button {
-        height: 36px;
+        height: 100%;
         border: none;
         font-size: 16px;
         background-color: $color-primary;
@@ -81,7 +137,7 @@ export default {
         font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: 0 6px 6px 0;
       }
 
       button:hover {
@@ -97,9 +153,21 @@ export default {
     flex-direction: column;
     gap: 10px;
 
+    .input-group {
+      flex: 1;
+
+      input {
+        border-radius: 6px;
+        font-size: 16px;
+      }
+    }
+
     .input-group.btn {
-      align-self: stretch;
-      margin-top: 10px;
+      flex: 1;
+
+      button {
+        border-radius: 6px;
+      }
     }
   }
 }
