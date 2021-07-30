@@ -35,6 +35,11 @@ export default {
       showClearBtn: false,
     };
   },
+  props: {
+    notFound: {
+      type: Boolean,
+    },
+  },
   methods: {
     onSubmit() {
       this.$emit("search-starship", this.searchTerm);
