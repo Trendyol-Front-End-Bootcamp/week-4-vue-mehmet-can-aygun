@@ -52,6 +52,7 @@ export default {
     align-items: center;
     cursor: pointer;
     border-radius: 4px;
+    transition: border 0.3s;
 
     .fa-chevron-left,
     .fa-chevron-right {

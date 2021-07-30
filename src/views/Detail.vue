@@ -82,20 +82,26 @@ export default {
 }
 
 .back-link {
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  background-color: $color-light;
-  margin-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: darken($color-light, 40);
+  width: 120px;
+  height: 40px;
+  margin-bottom: 30px;
   font-weight: bold;
+  background-color: $color-dark-gray;
+  color: $color-light;
+  border-radius: 4px;
+  border-top: 2px solid $color-secondary;
+  border-bottom: 2px solid $color-tertiary;
+  border-right: 2px solid transparent;
+  border-left: 2px solid transparent;
+  transition: border 0.3s;
 }
 
 .back-link:hover {
-  background-color: darken($color-light, 10);
+  border-right: 2px solid $color-secondary;
+  border-left: 2px solid $color-tertiary;
 }
 
 .starship-container {
@@ -120,7 +126,7 @@ export default {
       width: 120px;
       height: 4px;
       border-radius: 2px;
-      background-color: $color-primary;
+      background-color: $color-light;
     }
 
     p {
@@ -154,7 +160,19 @@ export default {
 
     img {
       max-width: 100%;
+      animation: fly 3s ease-in-out infinite;
     }
+  }
+}
+
+// Animations
+@keyframes fly {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
   }
 }
 
