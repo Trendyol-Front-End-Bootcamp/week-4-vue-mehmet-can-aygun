@@ -40,3 +40,9 @@ npm run build
 
 **Not Found Component**
 ![NotFound View](/src/assets/404-ss.png)
+
+## Asset Designs
+
+[Starship](https://www.figma.com/file/nfwWq9lcKjXqmIQ89W8xAx/Starship?node-id=0%3A1)
+[Lightsaber](https://www.figma.com/file/y8U9it6X1Rj4LdX9Nwz9AK/Lightsaber?node-id=0%3A1)
+[Darth Vader](https://www.figma.com/file/eo2NK5na513faueyBITzdi/Darth-Vader?node-id=0%3A1)
