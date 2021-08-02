@@ -1,6 +1,5 @@
-import ApiService from "../../services/ApiService";
+import ApiService from "../../src/services/ApiService";
 import axios from "axios";
-import { expect, jest } from "@jest/globals";
 
 jest.mock("axios");
 

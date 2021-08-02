@@ -5,6 +5,7 @@
       class="logo"
     >
       <img
+        class="star-wars-logo"
         src="../assets/logo.png"
         alt="StarWars"
       >
