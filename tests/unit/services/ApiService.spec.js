@@ -1,4 +1,4 @@
-import ApiService from "../../src/services/ApiService";
+import ApiService from "../../../src/services/ApiService";
 import axios from "axios";
 
 jest.mock("axios");
